@@ -54,6 +54,8 @@ ReactDOM.render(
     </BrowserRouter>
   </Provider>
   , document.querySelector('.container'));
+
+
 ```
 
   - notice that "HEADER" is just text that will show up on any component shown because it inside the div. 
@@ -61,8 +63,52 @@ ReactDOM.render(
   and if it matches, it displays the component.
   - If an undefined path shows up (misspellings or just gibberish) then no particular component is
    displayed but the HEADER will be there.
+  - the route does NOT have to match the component name
 
 ## Lecture 121: Route Design
+- PostsIndex => "/"
+- PostsShow
+- PostsNew
+
+## Lecture 122
+- Not much of a change but we did clean up our index.js file
+- NOTE: we no longer really need an "App" component so we removed the import statement and deleted
+the file
+- We imported our PostsIndex and wrote the route for it
+- here is the cleaned-up BrowserRouter parent div:
+
+```js
+<div>
+	<Route path="/" component={PostsIndex} />
+</div>
+```
+
+## Lecture 123: State as an Object
+
+
+## Lecture 124: Back to Redux - Index Action
+- Install Axios and Redux-Promise
+
+```sh
+npm install --save axios redux-promise
+```
+
+```js
+import promise from 'redux-promise';
+
+import reducers from './reducers';
+import PostsIndex from './components/posts_index';
+
+
+
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+```
+- the payload property of the action creator we wrote, fetchPosts, is "request".  Redux-Promise will
+see and resolve the promise for us
+
+FINISH L126, START 127
+
+
 
 
 
