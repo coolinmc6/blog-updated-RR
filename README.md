@@ -103,6 +103,7 @@ import PostsIndex from './components/posts_index';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 ```
+
 - the payload property of the action creator we wrote, fetchPosts, is "request".  Redux-Promise will
 see and resolve the promise for us
 
