@@ -1,5 +1,15 @@
 # README
 
+## Key Take-Aways
+- adding React-Router to a project
+- Adding the Switch
+- Using Link components
+- Setting up ReduxForm
+- Connecting ReduxForm to Component
+- Adding a field and passing properties
+- Adding the Validate function => L135, 136
+- Displaying errors => L136
+
 ## Lecture 117 & 118
 - Installing the correct React-Router.  Instead of just "react-router", what we need is the web-version:
 
@@ -158,6 +168,29 @@ export default reduxForm({
 })(PostsNew);
 ```
   - where 'PostsNewForm' is simply a unique string that is the name of our form
+- you can pass any properties you want through by entering them into the Field element as a property
+- 
+## Lecture 137: Handling Form Submittal
+- getting handleSubmit from this.props: `const { handleSubmit } = this.props`
+- handleSubmit is from ReduxForm; we need to pass it our own function, onSubmit
+- **Breather:** At this point, our posts_new component is quite simple: it's just a form element with three Field
+components.  Each Field component has three properties: label, name, and component.  "Label" does not have to be
+called "label"; it's just the property we are passing to Field which we are then using to create an actual HTML
+`<label>` element when we render it.  "Name" is the name of the input as required for HTML forms and "component"
+is the component that we want the input to have. The presentation of each of our Field components are handled by
+our `renderField()` function which, as you can see, is in the component curly braces.
+- We set-up the validate function which is just a function validate that takes as an argument "values".  We create
+an empty errors object and then through a series of if statements, check to see if any of the values meet particular
+criteria (i.e. the value of our title field is blank).  If so, we add a property to our errors object (errors.title)
+and set it to our error message.  We then update our renderField() function by placing our error message below the 
+input.  We also add our validate function as a property to our reduxForm connector at the bottom of the file (and
+because both the key and value are "validate", we only need to put "validate" once).
+- We grabbed the handleSubmit function given to us by ReduxForm from this.props.  We then add it to our form element
+so that when we submit the form, it is called.  However, we need to pass onto handleSubmit our own `onSubmit()`
+function and bind it in the `handleSubmit` parens.  At this point, when we click submit, we are console logging an
+object with properties that correspond to the names of our inputs and values that correspond to what we entered into
+each one.
 
-- Halfway through L134
+## Lecture 138: Form and Field States
+- Finish 138, start 139
 
