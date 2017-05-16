@@ -107,10 +107,57 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 - the payload property of the action creator we wrote, fetchPosts, is "request".  Redux-Promise will
 see and resolve the promise for us
 
-FINISH L126, START 127
+## Lecture 127: Rendering a List of Posts
+- Complete!
+- Learning lodash might be worth it...
+- In this section, we updated posts_index.js to actually display some of the post titles.  We used the lodash
+method `_.map` but besides that, nothing too crazy.
 
+## Lecture 128: Creating New Posts
+- created the posts_new.js file and brought it into the router
 
+## Lecture 129: React Router Gotcha
+- Switch is something that we imported that looks for the first one that matches the route.  So we had
+to move our "/posts/new" route up above our "/" route
 
+## Lecture 130: Navifation with the Link Component
+- The "Link" component is an anchor tag but WITHOUT the default properties of standard anchor tags
 
+## Lecture 131: Redux Form
+- Redux Form is really just saving us from manually wiring up all these action creators / reducers ourselves
 
+## Lecture 132: Setting up Redux Form
+Here are the basic steps:
+1. Identify the different pieces of form state => for us, this means title, categories, and contents for
+our posts
+1. Make one "Field" component per piece of state => inputs, textarea, checkbox, radio button?
+1. The user changes a "field" input
+1. Redux Form automatically handles changes
+1. User submits the form
+1. We validate the inputs and handle form submission
+
+- reduxForm is a function like "connect" that we use to connect our form to Redux
+
+```js
+import { reducer as formReducer } from 'redux-form';  // NEW
+import PostsReducer from './reducer_posts'
+
+const rootReducer = combineReducers({
+  posts: PostsReducer,
+  form: formReducer                                   // NEW
+});
+
+export default rootReducer;
+```
+- In the PostsNew component, we setup connect reduxForm to our component like we would with the "connect"
+function in Redux.
+
+```js
+export default reduxForm({
+  form: 'PostsNewForm'
+})(PostsNew);
+```
+  - where 'PostsNewForm' is simply a unique string that is the name of our form
+
+- Halfway through L134
 
