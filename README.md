@@ -9,6 +9,7 @@
 - Adding a field and passing properties
 - Adding the Validate function => L135, 136
 - Displaying errors => L136
+- Use both ReduxForm and Connect from Redux => 141
 
 ## Lecture 117 & 118
 - Installing the correct React-Router.  Instead of just "react-router", what we need is the web-version:
@@ -193,4 +194,31 @@ each one.
 
 ## Lecture 138: Form and Field States
 - Finish 138, start 139
+
+- What we did in the renderField() function of posts_new was pretty interesting:
+
+```js
+const { meta: { touched, error } } = field;
+const className = `form-group ${touched && error ? 'has-danger' : ''}`
+```
+  - now we can use just "touched" or "error" instead of field.meta.touched or field.meta.error
+  - if we did `const {meta} = field`, we would've been able to do meta.touched or meta.error. 
+
+## Lecture 141
+- we created our createPost action creator which largely makes sense.  Notice how with a post request we give the URL
+and then the values object.  It's similar to jQuery just a bit different
+- Probably the most technically interesting part was hooking up ReduxForm to our Connect helper from Redux.  Here it is:
+
+```js
+export default reduxForm({
+  validate,
+  form: 'PostsNewForm'
+})(
+  connect(null, { createPost })(PostsNew)
+);
+```
+  - we simply changed `(PostsNew)` to `(connect(null, { createPost})(PostsNew))`.  
+
+- Finish L141, start L142
+
 
