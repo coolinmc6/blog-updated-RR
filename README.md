@@ -10,6 +10,7 @@
 - Adding the Validate function => L135, 136
 - Displaying errors => L136
 - Use both ReduxForm and Connect from Redux => 141
+- Callbacks in action creator and navigating with history.push
 
 ## Lecture 117 & 118
 - Installing the correct React-Router.  Instead of just "react-router", what we need is the web-version:
@@ -219,6 +220,16 @@ export default reduxForm({
 ```
   - we simply changed `(PostsNew)` to `(connect(null, { createPost})(PostsNew))`.  
 
-- Finish L141, start L142
+## Lecture 142: Navigation through Callbacks
+
+## Lecture 143: The Posts Show Component
+- See PostsReducer for some great ES5 => ES6 code
+-
+
+L145
+- prevent component from trying to render until we have received the post.  So if no post, return a "loading" div
+
+L148
+- Deleting a post and the callback
 
 
